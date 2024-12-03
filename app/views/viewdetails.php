@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PanChitan ni Unchang</title>
+    <title>Interior Homes</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -139,20 +139,7 @@
     <!-- Shop End -->
 
        <!-- Footer Start -->
-       <div class="container-fluid bg-dark text-light pt-5">
-        <div class="row px-xl-5 pt-5">
-            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <h5 class="text-light text-uppercase mb-4">PanCHITan ni Unchang</h5>
-                <p class="mb-2">Juan Luna St., Calapan City, Philippines</p>
-                <p class="mb-0"><i class="fa fa-envelope mr-3"></i>panchitan@unchang.com</p>
-            </div>
-        </div>
-        <div class="row border-top mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0 text-center text-md-left">
-                <p class="mb-md-0 text-center text-md-left text-light">© PanCHITan ni Unchang. All Rights Reserved.</p>
-            </div>
-        </div>
-    </div>
+       
     <!-- Footer End -->
 
     <!-- Back to Top -->

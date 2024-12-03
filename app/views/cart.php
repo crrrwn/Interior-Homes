@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PanCHITan ni Unchang</title>
+    <title>Interior Homes</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -28,47 +28,17 @@
 
 <body>
   <!-- Topbar Start -->
-  <div class="container-fluid">
-        <div class="row bg-dark py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center text-light">
-                    <a class="text-light" href="">FAQs</a>
-                    <span class="text-muted px-2">|</span>
-                    <a class="text-light" href="">Help</a>
-                    <span class="text-muted px-2">|</span>
-                    <a class="text-light" href="">Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-light px-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-light px-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-light px-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-light px-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-light pl-2" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center py-3 px-xl-5">
+  <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-0 d-none d-lg-block">
                 <a href="/" class="text-decoration-none">
                     <h1 class="m-0 display-10 font-weight-semi-bold">
-                        <span class="text-danger font-weight-bold border px-3 mr-1">PanCHITan</span>ni Unchang
+                        <span class="">Interior Homes
                     </h1>
+                    
                 </a>
             </div>
             <div class="col-lg-12 col-6 text-right">
-           
+              
                 <a href="/cart" class="btn border">
                     <i class="fas fa-shopping-cart text-danger"></i>
                     <span class="badge"><?php echo $cartItemCount; ?></span>
@@ -76,20 +46,21 @@
             </div>
         </div>
     </div>
+
     <!-- Topbar End -->
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid mb-3">
+    <<div class="container-fluid mb-3">
         <div class="row border-top px-xl-5">
             <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg bg-warning navbar-light py-3 py-lg-0 px-0">
+                <nav class="navbar navbar-expand-lg  navbar-light py-3 py-lg-0 px-0">
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="/main" class="nav-item nav-link">Home</a>
+                            <a href="/main" class="nav-item nav-link active">Home</a>
                             <a href="/shop" class="nav-item nav-link">Menu</a>
                             <a href="/profile" class="nav-item nav-link">Profile</a>
                         </div>
@@ -168,7 +139,7 @@
                                 <?= $cartTotal ?>
                             </h5>
                         </div>
-                        <a href="/checkout" class="btn btn-block btn-warning my-3 py-3">Proceed To Checkout</a>
+                        <a href="/checkout" class="btn btn-block btn-secondary my-3 py-3">Proceed To Checkout</a>
                     </div>
                 </div>
             </div>

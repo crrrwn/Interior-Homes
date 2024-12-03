@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PanCHITan ni UNCHANG</title>
+    <title>Interior Homes</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Restaurant, Pancit, Dining" name="keywords">
     <meta content="Delicious pancit and Filipino dishes at PanCHITan ni Unchang." name="description">
@@ -33,7 +33,6 @@
                     <h1 class="m-0 display-10 font-weight-semi-bold">
                         <span class="">Interior Homes
                     </h1>
-                    
                 </a>
             </div>
             <div class="col-lg-12 col-6 text-right">
@@ -151,20 +150,12 @@
     <!-- Contact Start -->
 <div class="container-fluid pt-5">
     <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2 text-yellow-orange">Contact Us for Any Inquiries</span></h2>
         <div class="text-center mb-4">
-    
-        <h5 class="font-weight-semi-bold mb-3 text-yellow-orange">Get In Touch</h5>
         <p>Home interior design is not just about decorating spaces—it's about crafting a haven that reflects your soul, comforts your spirit, and inspires your life.</p>
-        <div class="d-flex flex-column mb-3">
-            <h5 class="font-weight-semi-bold mb-3 text-yellow-orange"></h5>
-            <p class="mb-2"><i class="fa fa-map-marker-alt icon-yellow-orange mr-3"></i>456 Maplewood Drive, Springfield, Illinois, USA 62704</p>
-            <p class="mb-2"><i class="fa fa-envelope icon-yellow-orange mr-3"></i>support@InteriorHomesDecor.com</p>
-            <p class="mb-2"><i class="fa fa-phone-alt icon-yellow-orange mr-3"></i>+639 123 456 789</p>
+        <div class="d-flex flex-column mb-3">   
         </div>
 </div>
     </div>
-   
 </div>
 <!-- Contact End -->
    
@@ -173,12 +164,15 @@
     <div class="container-fluid bg-dark text-light pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                
+                <h5 class="text-light text-uppercase mb-4">Interior Homes Decor </h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt icon-yellow-orange mr-3"></i>456 Maplewood Drive, Springfield, Illinois, USA 62704</p>
+            <p class="mb-2"><i class="fa fa-envelope icon-yellow-orange mr-3"></i>support@InteriorHomesDecor.com</p>
+            <p class="mb-2"><i class="fa fa-phone-alt icon-yellow-orange mr-3"></i>+639 123 456 789</p>
             </div>
         </div>
         <div class="row border-top mx-xl-5 py-4">
             <div class="col-md-6 px-xl-0 text-center text-md-left">
-                <p class="mb-md-0 text-center text-md-left text-light">© Interior Homes Decor . All Rights Reserved 2024.</p>
+                <p class="mb-md-0 text-center text-md-left text-light"> © Interior Homes Decor . All Rights Reserved 2024.</p>
             </div>
         </div>
     </div>
