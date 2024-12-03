@@ -1,8 +1,8 @@
-<header id="header" class="header fixed-top d-flex align-items-center bg-danger">
+<header id="header" class="header fixed-top d-flex align-items-center ">
 
-  <div class="d-flex align-items-center justify-content-between bg-danger p-2">
+  <div class="d-flex align-items-center justify-content-between p-2">
     <a href="/dashboard" class="logo d-flex align-items-center">
-      <span class="d-none d-lg-block text-dark">Admin-Dashboard</span>
+      <span class="d-none d-lg-block text-dark">Interior Homes </span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn text-dark"></i>
   </div><!-- End Logo -->
@@ -19,13 +19,13 @@
       <li class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="public/assets/img/gwen.jpg" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2 text-light">G. Basconcillo</span>
+          <img src="" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2 text-light">Admin</span>
         </a><!-- End Profile Image Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile bg-dark">
           <li class="dropdown-header text-light">
-            <h6>Gwen Basconcillo</h6>
+            <h6>Admin</h6>
             <span>Admin</span>
           </li>
           <li>

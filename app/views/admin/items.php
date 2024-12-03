@@ -12,13 +12,13 @@
 
     <main id="main" class="main">
     <div class="pagetitle">
-    <h1 class="text-danger">Add Products</h1> <!-- Warning color for the title -->
+    <h1 class="text-black">Add Products</h1> <!-- Warning color for the title -->
     </div><!-- End Page Title -->
 
     <section class="section">
         <div class="row">
             <div class="col-lg-8">
-                <div class="card bg-warning">
+                <div class="card ">
                     <div class="card-body">
                         <h5 class="card-title">Product Details</h5>
 
@@ -79,13 +79,13 @@
             </div>
 
             <div class="col-lg-4">
-                <div class="card bg-danger">
+                <div class="card ">
                     <div class="card-body" style="height: 380px;">
                         <div class="col-md-10 mx-auto">
-                            <h5 class="card-title text-white">Category</h5>
-                            <p class="text-white">Note: click to delete</p>
+                            <h5 class="card-title text-black">Category</h5>
+                            <p class="text-black">Click to Delete</p>
                             <div class="mb-4">
-                                <h6 class="text-white">Existing Categories:</h6>
+                                <h6 class="text-b">Existing Categories:</h6>
 
                                 <?php foreach ($cat as $c): ?>
                                     <span class="badge bg-dark mr-2 mb-2">

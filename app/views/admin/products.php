@@ -10,23 +10,23 @@
     <!-- ======= Sidebar ======= -->
     <?php echo include('chop/aside.php'); ?>
 
-  <main id="main" class="main bg-dark text-white"> <!-- Dark background for main content -->
+  <main id="main" class="main text-white"> <!-- Dark background for main content -->
 
     <div class="pagetitle">
-        <h1 class="text-warning">Products</h1> <!-- Warning color for the title -->
+        <h1 class="text-black">Products</h1> <!-- Warning color for the title -->
     </div>
 
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
 
-                <div class="card bg-dark"> <!-- Dark background for the card -->
+                <div class="card "> <!-- Dark background for the card -->
                     <div class="card-body">
 
                         <!-- Table with striped rows -->
                         <div class="table-responsive">
-                            <table class="table table-dark table-striped"> <!-- Dark and striped table -->
-                                <thead class="bg-warning text-dark"> <!-- Warning background for the header -->
+                            <table class="table  table-striped"> <!-- Dark and striped table -->
+                                <thead class="bg-warning text-blue"> <!-- Warning background for the header -->
                                     <tr>
                                         <th scope="col">Id</th>
                                         <th scope="col">Image</th>

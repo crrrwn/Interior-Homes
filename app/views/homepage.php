@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PanCHITan ni UNCHANG</title>
+    <title>Interior Homes</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Restaurant, Pancit, Dining" name="keywords">
     <meta content="Delicious pancit and Filipino dishes at PanCHITan ni Unchang." name="description">
