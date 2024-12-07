@@ -213,6 +213,43 @@ class AdminController extends Controller
             redirect('tracking');
         }
     }
+    public function delete($id)
+{
+    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+        redirect('login');
+    }
+
+    if (isset($id)) {
+        // Get the product information before deleting
+        $product = $this->AdminModel_model->searchInfo($id);
+
+        if ($product) {
+            // Delete the product from the database
+            $deleted = $this->db->table('prod')->where("id", $id)->delete();
+            
+            if ($deleted) {
+                // Delete the associated image file
+                if (!empty($product['image'])) {
+                    $image_path = 'uploads/' . $product['image'];
+                    if (file_exists($image_path)) {
+                        unlink($image_path);
+                    }
+                }
+                $_SESSION['success'] = 'Product deleted successfully';
+            } else {
+                $_SESSION['error'] = 'Failed to delete product';
+            }
+        } else {
+            $_SESSION['error'] = 'Product not found';
+        }
+    } else {
+        $_SESSION['error'] = 'Invalid product ID';
+    }
+    
+    redirect('modify');
+}
+
+
     
 }
 

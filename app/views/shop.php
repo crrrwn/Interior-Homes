@@ -43,34 +43,21 @@
        <!-- Topbar Start -->
        <div class="container-fluid">
         
-            <div class="col-lg-6 d-none d-lg-block">
+            <div class="">
                 
                     </a>
                 </div>
             </div>
         </div>
         <div class="row align-items-center py-3 px-xl-5">
-            <div class="col-lg-0 d-none d-lg-block">
-                <a href="/" class="text-decoration-none">
-                    <h1 class="m-0 display-10 font-weight-semi-bold">
-                        <span class="">Interior Homes
-                    </h1>
-                    
-                </a>
-            </div>
-            <div class="col-lg-12 col-6 text-right">
-              
-                <a href="/cart" class="btn border">
-                    <i class="fas fa-shopping-cart text-danger"></i>
-                    <span class="badge"><?php echo $cartItemCount; ?></span>
-                </a>
-            </div>
+        <div class="col-lg-12 text-center">
+            <a href="/" class="text-decoration-none">
+            <h1 class="m-0 display-10 font-weight-semi-bold text-truncate">
+                    Interior Homes Decor
+                </h1>
+            </a>
         </div>
     </div>
-    </div>
-    <!-- Topbar End -->
-
-    <!-- Navbar Start -->
     <<div class="container-fluid mb-3">
         <div class="row border-top px-xl-5">
             <div class="col-lg-12">
@@ -84,9 +71,34 @@
                             <a href="/shop" class="nav-item nav-link">Menu</a>
                             <a href="/profile" class="nav-item nav-link">Profile</a>
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
+
+                        </div>
+            <div class="col-lg-12 col-6 text-right">
+            <div class="navbar-nav ml-auto py">
                             <a href="/logout" class="nav-item nav-link">Logout</a>
                         </div>
+
+                        <a href="/cart" class="btn border">
+                    <i class="fas fa-shopping-cart bg-danger"></i>
+                    <span class="badge"><?php echo $cartItemCount; ?></span>
+        </a>
+    </div>
+</div>
+            </div>
+            <div class="col-lg-12 col-6 text-right">
+            <div class="navbar-nav ml-auto py">
+                            <a href="/logout" class="nav-item nav-link">Logout</a>
+                        </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Topbar End -->
+
+    
+
+                        
                     </div>
                 </nav>
             </div>
@@ -105,28 +117,18 @@
                             <form action="<?= BASE_URL . 'search'; ?>" method="get">
                                 <div class="input-group">
                                
-                                <input type="text" class="form-control" name="search" placeholder="Search by name">
-                                    <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary" style="background-color: #FFEB3B; border-color: #FFEB3B;">
-                                        <i class="fa fa-search"></i>
-                                    </button>
 
+                                    <div class="input-group-append">
+                                   
                                     </div>
-                                    <a href="/shop" class="btn btn-primary"style="background-color: #FFEB3B; border-color: #FFEB3B;" onclick="location.reload(true)">
-                                    <i class="fas fa-sync-alt"></i>
+                                    
                                     </a>
                                 </div>
                             </form>
                             <div class="dropdown ml-4">
-                                <button class="btn border dropdown-toggle" type="button" id="triggerId"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sort by
+                                
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Latest</a>
-                                    <a class="dropdown-item" href="#">Popularity</a>
-                                    <a class="dropdown-item" href="#">Best Rating</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -140,25 +142,28 @@
                     <?php else: ?>
 
                         <?php foreach ($prod as $pr): ?>
-                            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4 h-100">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"><img class="img-fluid w-100" src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt=""></a>
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3"><?= $pr['name'] ?></h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>₱<?= $pr['prize'] ?></h6>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="<?php echo BASE_URL . 'Acc/' . $pr['id']; ?>" class="btn btn-sm text-dark p-0">
-                                            <i class="fas fa-shopping-cart text-danger mr-1"></i>Add To Cart
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+        <div class="card product-item border-0 mb-4 h-100" style="border-radius: 40px; overflow: hidden;">
+            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0" style="border-radius: 10px 10px 0 0;">
+                <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>">
+                    <img class="img-fluid w-100" src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt="" style="border-radius: 10px 10px 0 0;">
+                </a>
+            </div>
+            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3" style="border-radius: 53;">
+                <h6 class="text-truncate mb-3"><?= $pr['name'] ?></h6>
+                <div class="d-flex justify-content-center">
+                    <h6>₱<?= $pr['prize'] ?></h6>
+                </div>
+            </div>
+            <div class="card-footer d-flex " style="border-radius: 0 0 10px 10px;">
+                <a href="<?php echo BASE_URL . 'Acc/' . $pr['id']; ?>" class="btn btn-sm text-dark p-0">
+                    <i class="fas fa-shopping-cart text-danger mr-1"></i>Add To Cart
+                </a>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+
                     <?php endif ?>
                 </div>
             </div>
@@ -178,7 +183,7 @@
             </div>
         </div>
         <div class="row border-top mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0 text-center text-md-left">
+            <div class="col-md-6 px-xl-0 text-center text-md-center">
                 <p class="mb-md-0 text-center text-md-left text-light"> © Interior Homes Decor . All Rights Reserved 2024.</p>
             </div>
         </div>

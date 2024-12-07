@@ -24,7 +24,7 @@
   --success: #28a745;
   --info: #6d340b;
   --warning: #6d340b;
-  --danger: #dc3545;
+  --danger: #E6BEAE;
   --light: #FFFFFF;
   --dark: #1C1C1C;
   --breakpoint-xs: 0;
@@ -6145,13 +6145,13 @@ button.bg-warning:focus {
 }
 
 .bg-danger {
-  background-color: #9A7E6F !important;
+  background-color: #E6BEAE !important;
 }
 
 a.bg-danger:hover, a.bg-danger:focus,
 button.bg-danger:hover,
 button.bg-danger:focus {
-  background-color: #bd2130 !important;
+  background-color: #E6BEAE !important;
 }
 
 .bg-light {
@@ -6165,7 +6165,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #626F47 !important;
+  background-color:  #556b2f !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -9305,7 +9305,7 @@ a.text-warning:hover, a.text-warning:focus {
 }
 
 .text-danger {
-  color: #dc3545 !important;
+  color: #E6BEAE !important;
 }
 
 a.text-danger:hover, a.text-danger:focus {

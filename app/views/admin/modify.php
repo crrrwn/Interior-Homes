@@ -9,20 +9,34 @@
 
     <!-- ======= Sidebar ======= -->
     <?php echo include('chop/aside.php'); ?>
-    <main id="main" class="main  text-white">
+    <main id="main" class="main bg-dark text-white">
     <div class="pagetitle">
-        <h1 class="textblack">Modify Items</h1> <!-- Warning color for the title -->
+        <h1 class="text-warning">Modify Items</h1> <!-- Warning color for the title -->
     </div>
+
+    <?php if(isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
+    <?php if(isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
 
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card text-white">
+                <div class="card bg-dark text-white">
                     <div class="card-body">
-                        <h5 class="card-title text-black">Item List</h5>
+                        <h5 class="card-title text-warning">Item List</h5>
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
-                            <table class="table  table-striped table-bordered datatable">
+                            <table class="table table-dark table-striped table-bordered datatable">
                                 <thead class="table-danger">
                                     <tr>
                                         <th scope="col">Id</th>
@@ -47,13 +61,18 @@
                                             <td><?= $pr['category'] ?></td>
                                             <td><?= $pr['quantity'] ?></td>
                                             <td>
-                                                <img src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt="asd"
+                                                <img src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt="Product Image"
                                                     style="max-width: 70px; cursor: pointer;">
                                             </td>
                                             <td>₱<?= $pr['prize'] ?></td>
                                             <td><?= $pr['date'] ?></td>
-                                            <td><a href="/edit/<?= $pr['id'] ?>" type="button"
-                                                    class="btn bg-danger">Edit</a></td>
+                                            <td>
+                                                <a href="/edit/<?= $pr['id'] ?>" type="button"
+                                                    class="btn btn-outline-warning btn-sm">Edit</a>
+                                                <a href="/delete/<?= $pr['id'] ?>" type="button"
+                                                    class="btn btn-outline-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this product? This action cannot be undone.')">Delete</a>
+                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -68,24 +87,25 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card  text-white">
+                <div class="card bg-dark text-white">
                     <div class="card-body">
-                    <div class="pagetitle  p-3 rounded">
+                    <div class="pagetitle bg-warning p-3 rounded">
                       <h1 class="text-dark">Modify Items</h1>
-                    </div><!-- End Page Title -->                        <!-- Floating Labels Form -->
-                        <form class="row g-3" action="/<?= (isset($edit['id'])) ? "submitedit/" . $edit['id'] : " " ?>" 
+                    </div><!-- End Page Title -->
+                        <!-- Floating Labels Form -->
+                        <form class="row g-3" action="/<?= (isset($edit['id'])) ? "submitedit/" . $edit['id'] : "save" ?>" 
                               method="post" enctype="multipart/form-data" id="imageForm">
                               
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control bg-dark text-black" id="floatingName" 
+                                    <input type="text" class="form-control bg-dark text-white" id="floatingName" 
                                            name="name" placeholder="Item Name" value="<?= (isset($edit['name'])) ? $edit['name'] : "" ?>" required>
                                     <label for="floatingName">Item Name</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea required class="form-control  text-black" name="description"
+                                    <textarea required class="form-control bg-dark text-white" name="description"
                                               placeholder="Description" id="floatingTextarea"
                                               style="height: 100px;"><?= (isset($edit['description'])) ? $edit['description'] : "" ?></textarea>
                                     <label for="floatingTextarea">Item Description</label>
@@ -126,9 +146,9 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="formFile" class="form-label text-black">Upload Image</label>
-                                <input class="form-control text-white" type="file" id="formFile" name="image"
-                                       onchange="previewImage()">
+                                <label for="formFile" class="form-label text-warning">Upload Image</label>
+                                <input class="form-control bg-dark text-white" type="file" id="formFile" name="image"
+                                       onchange="previewImage()" <?= isset($edit['id']) ? '' : 'required' ?>>
                             </div>
 
                             <?php if (isset($edit['image']) && !empty($edit['image'])): ?>
@@ -144,13 +164,12 @@
 
                             <!-- Submit and Reset Buttons -->
                             <div class="text-center">
-  <!-- Update Button with Olive Green -->
-  <input class="btn" style="background-color: #4F6D4F; color: #f4f4f4;" type="submit" value="<?= (isset($edit['id'])) ? "Update" : "Update" ?>">
-
-  <!-- Reset Button with Earthy Red/Brown -->
-  <a href="/modify" type="reset" class="btn" style="background-color: #9E2A2F; color: #f4f4f4;" onclick="resetForm()">Reset</a>
-</div>
-
+                                <input class="btn btn-warning" type="submit" value="<?= (isset($edit['id'])) ? "Update" : "Add" ?>">
+                                <a href="/modify" type="reset" class="btn btn-danger" onclick="resetForm()">Reset</a>
+                            </div>
+                        </form><!-- End floating Labels Form -->
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -92,6 +92,7 @@ $router->get('/modify', 'AdminController::modify');
 $router->post('/save', 'AdminController::add');
 $router->post('/addcat', 'AdminController::addcat');
 $router->get('/delcat/(:num)', 'AdminController::delcat');
+$router->get('/delete/(:num)', 'AdminController::delete'); // Delete product route
 
 // Tracking routes
 $router->get('/tracking', 'AdminController::trackModify');
@@ -107,4 +108,3 @@ $router->get('/yearlySales', 'ChartsController::yearlySales');
 $router->get('/buwan', 'ChartsController::buwan');
 $router->get('/reports', 'ReportsController::reports');
 $router->post('/downloadReportsPdf', 'ReportsController::downloadReportsPdf');
-

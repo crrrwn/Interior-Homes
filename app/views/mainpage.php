@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title>Interior Homes</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Restaurant, Pancit, Dining" name="keywords">
-    <meta content="Delicious pancit and Filipino dishes at PanCHITan ni Unchang." name="description">
+  
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -17,41 +16,175 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="public/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="public/css/style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* General Body Settings */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f2;
+            color: #2f4f4f;
+        }
+
+        /* Navbar */
+       
+
+        .navbar .nav-link {
+            color: #1F4529 !important;
+        }
+
+        .navbar .nav-link:hover {
+            color: #d2b48c !important;
+        }
+
+        /* Carousel */
+        .carousel-item {
+            position: relative;
+            height: 450px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            filter: blur(9px); /* Apply blur effect */
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .carousel-caption::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0); /* Dark overlay for text readability */
+            z-index: -1;
+        }
+
+        .carousel-caption h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            color:white;
+        }
+
+        .carousel-caption h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1F4529;
+        }
+
+        /* Buttons */
+        .btn-light {
+            background-color: #6b8e23;
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+
+        .btn-light:hover {
+            background-color: #556b2f;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #556b2f;
+            margin-bottom: 30px;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            font-size: 1.1rem;
+            color: #2f4f4f;
+            line-height: 1.6;
+        }
+
+        .contact-info i {
+            color: #6b8e23;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #556b2f;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        .footer p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #d2b48c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel-caption h3 {
+                font-size: 2rem;
+            }
+
+            .carousel-caption h4 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                fontD-size: 2rem;
+            }
+
+            .navbar .nav-link {
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                font-size: 1rem;
+            }
+
+            .btn-light {
+                padding: 8px 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- Topbar Start -->
-   
     <div class="row align-items-center py-3 px-xl-5">
-            <div class="col-lg-0 d-none d-lg-block">
-                <a href="/" class="text-decoration-none">
-                    <h1 class="m-0 display-10 font-weight-semi-bold">
-                        <span class="">Interior Homes
-                    </h1>
-                </a>
-            </div>
-            <div class="col-lg-12 col-6 text-right">
-              
-                <a href="/cart" class="btn border">
-                    <i class="fas fa-shopping-cart text-danger"></i>
-                    <span class="badge"><?php echo $cartItemCount; ?></span>
-                </a>
-            </div>
+        <div class="col-lg-12 text-center">
+            <a href="/" class="text-decoration-none">
+                <h1 class="m-0 display-4 font-weight-semi-bold text-dark">
+                    Interior Homes Decor
+                </h1>
+            </a>
         </div>
     </div>
-
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
-    <<div class="container-fluid mb-3">
+    <div class="container-fluid mb-3">
         <div class="row border-top px-xl-5">
             <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg  navbar-light py-3 py-lg-0 px-0">
+                <nav class="navbar navbar-expand-lg navbar-dark py-3 py-lg-0 px-0">
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -69,111 +202,43 @@
             </div>
         </div>
     </div>
-
     <!-- Navbar End -->
 
     <!-- Carousel Start -->
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" style="height: 410px;">
-                <img class="img-fluid" src="https://i.pinimg.com/736x/7c/35/e3/7c35e3cd08d678e01eaabdf2e0b77387.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 700px;">
-                        <h4 class="text-light text-uppercase font-weight-medium mb-3">Crafting Your Own Design</h4>
-                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">Crafting Your Unique Home Decor Design</h3>
-                    </div>
+            <div class="carousel-item active">
+                <img class="img-fluid" src="https://i.pinimg.com/736x/72/94/60/7294601d084f78bbefb0e4f17545e5e4.jpg" alt="Image">
+                <div class="carousel-caption">
+                    <h4>Crafting Your Own Design</h4>
+                    <h3>Crafting Your Unique Home Decor Design</h3>
+                    <a href="/shop" class="btn btn-light py-2 px-3">Shop Now</a>
                 </div>
             </div>
-            <div class="carousel-item" style="height: 410px;">
-                <img class="img-fluid" src="https://i.pinimg.com/736x/96/72/99/96729961976edd2aef40026e0a67bd73.jpg" alt="Image">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 700px;">
-                        <h4 class="text-light text-uppercase font-weight-medium mb-3">Create Spaces That Inspire</h4>
-                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">Living Spaces, Loving Places.</h3>
-                        <a href="/shop" class="btn btn-light py-2 px-3">Order Now</a>
-                    </div>
-                </div>
-            </div>
+            <!-- Add more carousel items here -->
         </div>
     </div>
-    <div class="carousel-item" style="height: 410px;">
-    <img class="img-fluid" src="https://i.pinimg.com/736x/46/5d/85/465d85ebf5069341a95ebf244808952f.jpg" alt="Image">
-    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-        <div class="p-3" style="max-width: 700px;">
-            <h4 class="text-light text-uppercase font-weight-medium mb-3">Hearty & Flavorful</h4>
-            <h3 class="display-4 text-white font-weight-semi-bold mb-4">A Taste of Filipino Tradition</h3>
-            <a href="/menu" class="btn btn-light py-2 px-3">Explore Our Menu</a>
-        </div>
-    </div>
-</div>
-<div class="carousel-item" style="height: 410px;">
-    <img class="img-fluid" src="https://i.pinimg.com/736x/27/6d/32/276d326ad0478d4b72e977ee670cb82c.jpg" alt="Image">
-    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-        <div class="p-3" style="max-width: 700px;">
-            <h4 class="text-light text-uppercase font-weight-medium mb-3">Where Style Meets Comfort</h4>
-            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Beauty Begins at Home</h3>
-            <a href="/order" class="btn btn-light py-2 px-3">Order Now</a>
-        </div>
-    </div>
-</div>
-<div class="carousel-item" style="height: 410px;">
-    <img class="img-fluid" src="https://i.pinimg.com/736x/77/56/6c/77566c80518cc0a5255c8a3df8eaeb42.jpg" alt="Image">
-    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-        <div class="p-3" style="max-width: 700px;">
-            <h4 class="text-light text-uppercase font-weight-medium mb-3">Timeless Design, Modern Living</h4>
-            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Chic Comfort for Every Corner</h3>
-            <a href="/specials" class="btn btn-light py-2 px-3">View Specials</a>
-        </div>
-    </div>
-</div>
-<div class="carousel-item" style="height: 410px;">
-    <img class="img-fluid" src="https://i.pinimg.com/736x/41/86/f1/4186f1e4d484cbc00a01d9b317bdd328.jpg" alt="Image">
-    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-        <div class="p-3" style="max-width: 700px;">
-            <h4 class="text-light text-uppercase font-weight-medium mb-3">From Blank Walls to Masterpieces</h4>
-            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Make Your Home Uniquely Yours</h3>
-            <a href="/about" class="btn btn-light py-2 px-3">Learn More</a>
-        </div>
-    </div>
-</div>
-
-    <!-- Crousel End -->
-
-    <!-- Featured Start -->
-    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Featured End -->
+    <!-- Carousel End -->
 
     <!-- Contact Start -->
-<div class="container-fluid pt-5">
-    <div class="text-center mb-4">
+    <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-        <p>Home interior design is not just about decorating spaces—it's about crafting a haven that reflects your soul, comforts your spirit, and inspires your life.</p>
-        <div class="d-flex flex-column mb-3">   
+            <h2 class="section-title">Contact Us for Any Inquiries</h2>
+            <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
+            <p>Home interior design is not just about decorating spaces—it's about crafting a haven that reflects your soul, comforts your spirit, and inspires your life.</p>
+            <div class="contact-info">
+                <p><i class="fa fa-map-marker-alt mr-3"></i>456 Maplewood Drive, Springfield, Illinois, USA 62704</p>
+                <p><i class="fa fa-envelope mr-3"></i>support@InteriorHomesDecor.com</p>
+                <p><i class="fa fa-phone-alt mr-3"></i>+639 123 456 789</p>
+            </div>
         </div>
-</div>
     </div>
-</div>
-<!-- Contact End -->
-   
+    <!-- Contact End -->
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light pt-5">
-        <div class="row px-xl-5 pt-5">
-            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <h5 class="text-light text-uppercase mb-4">Interior Homes Decor </h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt icon-yellow-orange mr-3"></i>456 Maplewood Drive, Springfield, Illinois, USA 62704</p>
-            <p class="mb-2"><i class="fa fa-envelope icon-yellow-orange mr-3"></i>support@InteriorHomesDecor.com</p>
-            <p class="mb-2"><i class="fa fa-phone-alt icon-yellow-orange mr-3"></i>+639 123 456 789</p>
-            </div>
-        </div>
-        <div class="row border-top mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0 text-center text-md-left">
-                <p class="mb-md-0 text-center text-md-left text-light"> © Interior Homes Decor . All Rights Reserved 2024.</p>
-            </div>
+    <div class="footer">
+        <div class="container">
+            <p>© Interior Homes Decor . All Rights Reserved 2024.</p>
         </div>
     </div>
     <!-- Footer End -->
@@ -181,15 +246,6 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="public/lib/easing/easing.min.js"></script>
-    <script src="public/lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="public/mail/jqBootstrapValidation.min.js"></script>
-    <script src="public/mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="public/js/main.js"></script>
 </body>
 
 </html>
