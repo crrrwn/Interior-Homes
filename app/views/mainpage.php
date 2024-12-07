@@ -3,123 +3,134 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Interior Homes</title>
+    <title>Interior Homes Decor</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
+    <meta content="Interior design, home decor, furniture" name="keywords">
+    <meta content="Transform your living space with Interior Homes Decor" name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* General Body Settings */
+        :root {
+            --primary-color: #6b8e23;
+            --secondary-color: #556b2f;
+            --accent-color: #d2b48c;
+            --text-color: #2f4f4f;
+            --bg-color: #f4f4f2;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f4f4f2;
-            color: #2f4f4f;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
-        /* Navbar */
-       
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--secondary-color) !important;
+        }
 
         .navbar .nav-link {
-            color: #1F4529 !important;
+            color: var(--text-color) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        .navbar .nav-link:hover {
-            color: #d2b48c !important;
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--primary-color) !important;
         }
 
-        /* Carousel */
         .carousel-item {
+            height: 70vh;
+            min-height: 350px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
             position: relative;
-            height: 450px;
-        }
-
-        .carousel-item img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-            filter: blur(9px); /* Apply blur effect */
         }
 
         .carousel-caption {
-            position: absolute;
             bottom: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: white;
-            z-index: 1;
-        }
-
-        .carousel-caption::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0); /* Dark overlay for text readability */
-            z-index: -1;
+            z-index: 10;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 10px;
         }
 
         .carousel-caption h3 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color:white;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .carousel-caption h4 {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: #1F4529;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
         }
 
-        /* Buttons */
-        .btn-light {
-            background-color: #6b8e23;
-            color: white;
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
             border-radius: 30px;
-            font-weight: bold;
-            padding: 10px 20px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-        .btn-light:hover {
-            background-color: #556b2f;
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Section Title */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #556b2f;
-            margin-bottom: 30px;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
         }
 
-        /* Contact Info */
         .contact-info {
             font-size: 1.1rem;
-            color: #2f4f4f;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .contact-info i {
-            color: #6b8e23;
+            color: var(--primary-color);
+            margin-right: 10px;
         }
 
-        /* Footer */
         .footer {
-            background-color: #556b2f;
+            background-color: var(--secondary-color);
             color: #fff;
             padding: 30px 0;
         }
@@ -130,15 +141,15 @@
         }
 
         .footer a {
-            color: #fff;
+            color: var(--accent-color);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .footer a:hover {
-            color: #d2b48c;
+            color: #fff;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .carousel-caption h3 {
                 font-size: 2rem;
@@ -149,7 +160,7 @@
             }
 
             .section-title {
-                fontD-size: 2rem;
+                font-size: 2rem;
             }
 
             .navbar .nav-link {
@@ -159,77 +170,81 @@
             .contact-info {
                 font-size: 1rem;
             }
-
-            .btn-light {
-                padding: 8px 18px;
-            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="row align-items-center py-3 px-xl-5">
-        <div class="col-lg-12 text-center">
-            <a href="/" class="text-decoration-none">
-                <h1 class="m-0 display-4 font-weight-semi-bold text-dark">
-                    Interior Homes Decor
-                </h1>
-            </a>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
     <!-- Navbar Start -->
-    <div class="container-fluid mb-3">
-        <div class="row border-top px-xl-5">
-            <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg navbar-dark py-3 py-lg-0 px-0">
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="/main" class="nav-item nav-link active">Home</a>
-                            <a href="/shop" class="nav-item nav-link">Menu</a>
-                            <a href="/profile" class="nav-item nav-link">Profile</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="/logout" class="nav-item nav-link">Logout</a>
-                        </div>
-                    </div>
-                </nav>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Interior Homes Decor</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/main" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/shop" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/profile" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
     <!-- Navbar End -->
 
     <!-- Carousel Start -->
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="img-fluid" src="https://i.pinimg.com/736x/72/94/60/7294601d084f78bbefb0e4f17545e5e4.jpg" alt="Image">
+            <div class="carousel-item active" style="background-image: url('https://i.pinimg.com/736x/72/94/60/7294601d084f78bbefb0e4f17545e5e4.jpg');">
                 <div class="carousel-caption">
                     <h4>Crafting Your Own Design</h4>
                     <h3>Crafting Your Unique Home Decor Design</h3>
-                    <a href="/shop" class="btn btn-light py-2 px-3">Shop Now</a>
+                    <a href="/shop" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
-            <!-- Add more carousel items here -->
+            <div class="carousel-item" style="background-image: url('https://i.pinimg.com/originals/8c/93/4b/8c934b0a8f07aaef1e0a6239a9ef4c3b.jpg');">
+                <div class="carousel-caption">
+                    <h4>Elevate Your Living Space</h4>
+                    <h3>Discover Timeless Elegance for Your Home</h3>
+                    <a href="/shop" class="btn btn-primary">Explore Collection</a>
+                </div>
+            </div>
         </div>
+        <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
     <!-- Carousel End -->
 
     <!-- Contact Start -->
-    <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
+    <div class="container py-5">
+        <div class="text-center mb-5">
             <h2 class="section-title">Contact Us for Any Inquiries</h2>
-            <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
-            <p>Home interior design is not just about decorating spaces—it's about crafting a haven that reflects your soul, comforts your spirit, and inspires your life.</p>
-            <div class="contact-info">
-                <p><i class="fa fa-map-marker-alt mr-3"></i>456 Maplewood Drive, Springfield, Illinois, USA 62704</p>
-                <p><i class="fa fa-envelope mr-3"></i>support@InteriorHomesDecor.com</p>
-                <p><i class="fa fa-phone-alt mr-3"></i>+639 123 456 789</p>
+            <h5 class="font-weight-normal text-muted mb-4">Get In Touch</h5>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p class="text-center mb-5">Home interior design is not just about decorating spaces—it's about crafting a haven that reflects your soul, comforts your spirit, and inspires your life.</p>
+                <div class="contact-info text-center">
+                    <p><i class="fas fa-map-marker-alt"></i>456 Maplewood Drive, Springfield, Illinois, USA 62704</p>
+                    <p><i class="fas fa-envelope"></i>support@InteriorHomesDecor.com</p>
+                    <p><i class="fas fa-phone-alt"></i>+639 123 456 789</p>
+                </div>
             </div>
         </div>
     </div>
@@ -238,14 +253,25 @@
     <!-- Footer Start -->
     <div class="footer">
         <div class="container">
-            <p>© Interior Homes Decor . All Rights Reserved 2024.</p>
+            <p>© 2024 Interior Homes Decor. All Rights Reserved. Designed with <i class="fas fa-heart"></i> by <a href="#">YourName</a></p>
         </div>
     </div>
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll behavior
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+    </script>
 </body>
 
 </html>
+

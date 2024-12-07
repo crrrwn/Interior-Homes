@@ -3,204 +3,472 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Interior Homes</title>
+    <title>Interior Homes - Checkout</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="Interior design, home decor, checkout" name="keywords">
+    <meta content="Complete your purchase of beautiful home decor items" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="<?php echo BASE_URL . 'img/favicon.ico'; ?>" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="public/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="public/css/style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a6741;
+            --secondary-color: #8a9e8d;
+            --accent-color: #d4a373;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .btn-cart {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cart:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-cart::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .btn-cart:active::after {
+            width: 300px;
+            height: 300px;
+            margin-left: -150px;
+            margin-top: -150px;
+            opacity: 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid var(--secondary-color);
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(74, 103, 65, 0.25);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 3rem 0;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: none;
+            background-color: var(--primary-color);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .order-item-details {
+            flex-grow: 1;
+        }
+
+        .order-item-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .order-item-price {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .order-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Topbar Start -->
-  <div class="row align-items-center py-3 px-xl-5">
-            <div class="col-lg-0 d-none d-lg-block">
-                <a href="/" class="text-decoration-none">
-                    <h1 class="m-0 display-10 font-weight-semi-bold">
-                        <span class="">Interior Homes
-                    </h1>
-                    
-                </a>
-            </div>
-            <div class="col-lg-12 col-6 text-right">
-              
-                <a href="/cart" class="btn border">
-                    <i class="fas fa-shopping-cart text-danger"></i>
-                    <span class="badge"><?php echo $cartItemCount; ?></span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Topbar End -->
-
-
     <!-- Navbar Start -->
-    <<div class="container-fluid mb-3">
-        <div class="row border-top px-xl-5">
-            <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg  navbar-light py-3 py-lg-0 px-0">
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="/main" class="nav-item nav-link active">Home</a>
-                            <a href="/shop" class="nav-item nav-link">Menu</a>
-                            <a href="/profile" class="nav-item nav-link">Profile</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="/logout" class="nav-item nav-link">Logout</a>
-                        </div>
-                    </div>
-                </nav>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a href="/" class="navbar-brand">Interior Homes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/main" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/shop" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/profile" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Logout</a>
+                    </li>
+                </ul>
+                <a href="/cart" class="btn btn-cart ml-3">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge badge-light ml-1"><?php echo $cartItemCount; ?></span>
+                </a>
             </div>
         </div>
-    </div>
+    </nav>
     <!-- Navbar End -->
 
-
     <!-- Checkout Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
-                    <p>Please double Check before you place ordered</p>
-                    <form action="/purchase" method="post">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>First Name</label>
-                                <input class="form-control" type="text" name="fullname"
-                                    value="<?= $users['fullname']; ?>" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>E-mail</label>
-                                <input class="form-control" type="text" name="email" value="<?= $users['email']; ?>"
-                                    readonly>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Complete Address</label>
-                                <input class="form-control" type="text" name="compAdd"
-                                    value="<?= $users['compAdd']; ?>" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Mobile No</label>
-                                <input class="form-control" type="text" name="number" value="<?= $users['number']; ?>" required>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+    <div class="container py-5">
+        <h2 class="text-center mb-5 fade-in-up">Complete Your Order</h2>
+        <div class="row">
+            <div class="col-lg-8 fade-in-up" style="animation-delay: 0.2s;">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Billing Details</h4>
                     </div>
                     <div class="card-body">
-                        <h5 class="font-weight-medium mb-3">Products</h5>
-
-                        <?php
-                        $cartTotal = 0; // Initialize the overall cart total
-                        foreach ($cart as $c):
-                            $itemTotal = $c['prize'] * $c['quantity']; // Calculate total for each item
-                            $cartTotal += $itemTotal; // Add the total of each item to the overall cart total
-                            ?>
-                            <div class="d-flex justify-content-between">
-                                <p>
-                                    <?= $c['name'] ?>
-                                    <?= $c['quantity'] ?>
-                                </p>
-                                <p>₱
-                                    <?= $c['prize'] ?>
-                                </p>
-                            </div>
-                        <?php endforeach; ?>
-
-                        <div class="card-footer border-secondary bg-transparent">
-                            <div class="d-flex justify-content-between mt-2">
-                                <h5 class="font-weight-bold">Total</h5>
-                                <h5 class="font-weight-bold">$
-                                    <?= $cartTotal ?>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card border-secondary mb-5">
-                        <div class="card-header bg-secondary border-0">
-                            <h4 class="font-weight-semi-bold m-0">Payment</h4>
-                        </div>
-                        <div class="card-body">
-                           
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="COD">
-                                    <label class="custom-control-label" for="COD">Cash on Delivery</label>
+                        <form action="/purchase" method="post">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="fullname">Full Name</label>
+                                    <input class="form-control" type="text" id="fullname" name="fullname" value="<?= htmlspecialchars($users['fullname']); ?>" required>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="email">E-mail</label>
+                                    <input class="form-control" type="email" id="email" name="email" value="<?= htmlspecialchars($users['email']); ?>" readonly>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="compAdd">Complete Address</label>
+                                    <input class="form-control" type="text" id="compAdd" name="compAdd" value="<?= htmlspecialchars($users['compAdd']); ?>" required>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="number">Mobile No</label>
+                                    <input class="form-control" type="tel" id="number" name="number" value="<?= htmlspecialchars($users['number']); ?>" required>
                                 </div>
                             </div>
-                          
-                        </div>
-                        <div class="card-footer border-secondary bg-transparent">
-                            <button class="btn btn-lg btn-block btn-secondary font-weight-bold my-3 py-3">Place
-                                Order</button>
-                        </div>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Checkout End -->
-
-   <!-- Footer Start -->
-   <div class="container-fluid bg-dark text-light pt-5">
-        <div class="row px-xl-5 pt-5">
-            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <h5 class="text-light text-uppercase mb-4">PanCHITan ni Unchang</h5>
-                <p class="mb-2">Juan Luna St., Calapan City, Philippines</p>
-                <p class="mb-0"><i class="fa fa-envelope mr-3"></i>panchitan@unchang.com</p>
-            </div>
-        </div>
-        <div class="row border-top mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0 text-center text-md-left">
-                <p class="mb-md-0 text-center text-md-left text-light">© PanCHITan ni Unchang. All Rights Reserved.</p>
+            <div class="col-lg-4 fade-in-up" style="animation-delay: 0.4s;">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Order Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                        $cartTotal = 0;
+                        foreach ($cart as $c):
+                            $itemTotal = $c['prize'] * $c['quantity'];
+                            $cartTotal += $itemTotal;
+                        ?>
+                            <div class="order-item">
+                                <img src="<?php echo BASE_URL . 'uploads/' . $c['image']; ?>" alt="<?= htmlspecialchars($c['name']) ?>" class="order-item-image">
+                                <div class="order-item-details">
+                                    <div class="order-item-name"><?= htmlspecialchars($c['name']) ?></div>
+                                    <div class="order-item-price">
+                                        <?= $c['quantity'] ?> x ₱<?= number_format($c['prize'], 2) ?>
+                                    </div>
+                                </div>
+                                <div class="order-item-total">
+                                    ₱<?= number_format($itemTotal, 2) ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <hr>
+                        <div class="d-flex justify-content-between order-total">
+                            <strong>Total:</strong>
+                            <strong>₱<?= number_format($cartTotal, 2) ?></strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">Payment Method</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="payment" id="COD" checked>
+                            <label class="custom-control-label" for="COD">Cash on Delivery</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block py-3">Place Order</button>
+                </form>
             </div>
         </div>
     </div>
+    <!-- Checkout End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Interior Homes</h5>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Juan Luna St., Calapan City, Philippines</p>
+                    <p><i class="fa fa-envelope mr-2"></i>info@interiorhomes.com</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+639 123 456 789</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="mr-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="mr-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="mr-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Interior Homes. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
     <!-- Footer End -->
 
-
-
-
     <!-- Back to Top -->
-    <a href="#" class="btn btn-danger back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="public/lib/easing/easing.min.js"></script>
-    <script src="public/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="public/mail/jqBootstrapValidation.min.js"></script>
-    <script src="public/mail/contact.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        $(document).ready(function() {
+            // Back to top button
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('.back-to-top').fadeIn();
+                } else {
+                    $('.back-to-top').fadeOut();
+                }
+            });
+            
+            $('.back-to-top').click(function() {
+                $('html, body').animate({scrollTop : 0}, 800);
+                return false;
+            });
 
-    <!-- Template Javascript -->
-    <script src="public/js/main.js"></script>
+            // Form validation
+            $('form').submit(function(event) {
+                var isValid = true;
+                $(this).find('input[required]').each(function() {
+                    if (!$(this).val()) {
+                        isValid = false;
+                        $(this).addClass('is-invalid');
+                    } else {
+                        $(this).removeClass('is-invalid');
+                    }
+                });
+                if (!isValid) {
+                    event.preventDefault();
+                    alert('Please fill in all required fields.');
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if( target.length ) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
+
