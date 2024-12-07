@@ -3,12 +3,16 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->call->model('AdminModel_model');
+        //$this->call->model('Reports_model');
+        //$this->call->model('CategoryModel');
+    }
 
     public function dashboard()
     {
-        // if (!$this->session->userdata('IsAdmin')) {
-        //     redirect('login');
-        // }
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
@@ -19,6 +23,7 @@ class AdminController extends Controller
         $data['overall_sales'] = $this->Reports_model->getOverallSales();
         $this->call->view('admin/dashboard', $data);
     }
+
     public function products()
     {
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
@@ -27,6 +32,7 @@ class AdminController extends Controller
         $data['prod'] = $this->AdminModel_model->getInfo();
         $this->call->view('admin/products', $data);
     }
+
     public function add()
     {
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
@@ -38,8 +44,6 @@ class AdminController extends Controller
         $quantity = $this->io->post('quantity');
         $prize = $this->io->post('prize');
 
-
-        // File upload handling
         $uploadDir = 'uploads/';
         $uploadedFile = $_FILES['image']['tmp_name'];
         $imageFileName = uniqid('img_') . '_' . $_FILES['image']['name'];
@@ -53,37 +57,56 @@ class AdminController extends Controller
             "category" => $category,
             "quantity" => $quantity,
             "prize" => $prize,
-            "image" => $imageFileName  // Save the image file name in the database
+            "image" => $imageFileName
         );
 
         $this->db->table('prod')->insert($bind);
 
         redirect('items');
     }
+
+    public function categories()
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            redirect('login');
+        }
+        $data['active'] = 'categories';
+        $data['cat'] = $this->AdminModel_model->getCat();
+        $this->call->view('admin/chop/categories', $data);
+    }
+
     public function addcat()
     {
-        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
             redirect('login');
         }
         $newcat = $this->io->post('newcat');
         $ins = [
             'categories' => $newcat
         ];
-        $this->db->table('cat')->insert($ins);
-        redirect('items');
+        if ($this->db->table('cat')->insert($ins)) {
+            $_SESSION['success'] = 'Category added successfully';
+        } else {
+            $_SESSION['error'] = 'Failed to add category';
+        }
+        redirect('categories');
     }
+
     public function delcat($id)
     {
-        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
             redirect('login');
         }
         if (isset($id)) {
-            $this->db->table('cat')->where("id", $id)->delete();
-            redirect('items');
+            if ($this->db->table('cat')->where("id", $id)->delete()) {
+                $_SESSION['success'] = 'Category deleted successfully';
+            } else {
+                $_SESSION['error'] = 'Failed to delete category';
+            }
         } else {
-            $_SESSION['delete'] = "FAILED";
-            redirect('items');
+            $_SESSION['error'] = 'Invalid category ID';
         }
+        redirect('categories');
     }
 
     public function items()
@@ -97,7 +120,6 @@ class AdminController extends Controller
 
     public function modify()
     {
-
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
@@ -130,12 +152,9 @@ class AdminController extends Controller
             $quantity = $this->io->post('quantity');
             $prize = $this->io->post('prize');
 
-            // Initialize $imageFileName
             $imageFileName = null;
 
-            // Check if a new image is uploaded
             if ($_FILES['image']['size'] > 0) {
-                // File upload handling
                 $uploadDir = 'uploads/';
                 $uploadedFile = $_FILES['image']['tmp_name'];
                 $imageFileName = uniqid('img_') . '_' . $_FILES['image']['name'];
@@ -143,7 +162,6 @@ class AdminController extends Controller
                 move_uploaded_file($uploadedFile, $targetFile);
             }
 
-            // Build the $data array
             $data = [
                 "name" => $name,
                 "description" => $description,
@@ -152,12 +170,10 @@ class AdminController extends Controller
                 "prize" => $prize,
             ];
 
-            // Add image to $data if it's set
             if ($imageFileName !== null) {
                 $data["image"] = $imageFileName;
             }
 
-            // Update the product data in the database
             $this->db->table('prod')->where("id", $id)->update($data);
             redirect('modify');
         }
@@ -192,7 +208,7 @@ class AdminController extends Controller
     
         if (isset($id)) {
             $item_name = $this->io->post('item_name');
-            $customer_id = $this->io->post('customer_id');  // Corrected to match your form
+            $customer_id = $this->io->post('customer_id');
             $customer = $this->io->post('customer');
             $quantity = $this->io->post('quantity');
             $prize = $this->io->post('prize');
@@ -201,7 +217,7 @@ class AdminController extends Controller
     
             $data = [
                 "Item_name" => $item_name,
-                "CustomerId" => $customer_id,  // Ensure you're using the correct column name
+                "CustomerId" => $customer_id,
                 "Customer" => $customer,
                 "quantity" => $quantity,
                 "prize" => $prize,
@@ -213,45 +229,85 @@ class AdminController extends Controller
             redirect('tracking');
         }
     }
+
     public function delete($id)
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            redirect('login');
+        }
+
+        if (isset($id)) {
+            $product = $this->AdminModel_model->searchInfo($id);
+
+            if ($product) {
+                $deleted = $this->db->table('prod')->where("id", $id)->delete();
+                
+                if ($deleted) {
+                    if (!empty($product['image'])) {
+                        $image_path = 'uploads/' . $product['image'];
+                        if (file_exists($image_path)) {
+                            unlink($image_path);
+                        }
+                    }
+                    $_SESSION['success'] = 'Product deleted successfully';
+                } else {
+                    $_SESSION['error'] = 'Failed to delete product';
+                }
+            } else {
+                $_SESSION['error'] = 'Product not found';
+            }
+        } else {
+            $_SESSION['error'] = 'Invalid product ID';
+        }
+        
+        redirect('modify');
+    }
+
+    public function updateStatus()
 {
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         redirect('login');
     }
 
-    if (isset($id)) {
-        // Get the product information before deleting
-        $product = $this->AdminModel_model->searchInfo($id);
-
-        if ($product) {
-            // Delete the product from the database
-            $deleted = $this->db->table('prod')->where("id", $id)->delete();
-            
-            if ($deleted) {
-                // Delete the associated image file
-                if (!empty($product['image'])) {
-                    $image_path = 'uploads/' . $product['image'];
-                    if (file_exists($image_path)) {
-                        unlink($image_path);
-                    }
-                }
-                $_SESSION['success'] = 'Product deleted successfully';
-            } else {
-                $_SESSION['error'] = 'Failed to delete product';
-            }
-        } else {
-            $_SESSION['error'] = 'Product not found';
-        }
-    } else {
-        $_SESSION['error'] = 'Invalid product ID';
+    $id = $this->io->post('id');
+    $status = $this->io->post('status');
+    
+    if (!$id || !$status) {
+        $_SESSION['error'] = 'Invalid request';
+        redirect('tracking');
+        return;
     }
+
+    $allowed_statuses = ['Pending', 'Preparing', 'Out for Delivery', 'Delivered'];
     
-    redirect('modify');
+    if (!in_array($status, $allowed_statuses)) {
+        $_SESSION['error'] = 'Invalid status';
+        redirect('tracking');
+        return;
+    }
+
+    $update = $this->db->table('purchase_items')
+                      ->where('id', $id)
+                      ->update(['status' => $status]);
+
+    if ($update) {
+        $_SESSION['success'] = 'Status updated successfully';
+    } else {
+        $_SESSION['error'] = 'Failed to update status';
+    }
+
+    redirect('tracking');
 }
 
 
-    
+    public function viewOrder($id)
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            redirect('login');
+        }
+
+        $data['order'] = $this->AdminModel_model->getPurchaseItemById($id);
+        $this->call->view('admin/view-order', $data);
+    }
 }
 
-
-?>

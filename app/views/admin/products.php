@@ -13,7 +13,7 @@
   <main id="main" class="main text-white"> <!-- Dark background for main content -->
 
     <div class="pagetitle">
-        <h1 class="text-black">Products</h1> <!-- Warning color for the title -->
+        <h1 class="text-black">Inventory</h1> <!-- Changed from "Products" to "Inventory" -->
     </div>
 
     <section class="section">

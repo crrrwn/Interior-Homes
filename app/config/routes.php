@@ -94,12 +94,19 @@ $router->post('/addcat', 'AdminController::addcat');
 $router->get('/delcat/(:num)', 'AdminController::delcat');
 $router->get('/delete/(:num)', 'AdminController::delete'); // Delete product route
 
+// Category management route
+$router->get('/categories', 'AdminController::categories');
+
 // Tracking routes
 $router->get('/tracking', 'AdminController::trackModify');
 $router->get('/edit/(:num)', 'AdminController::edit');
 $router->post('/submitedit/(:num)', 'AdminController::submitedit');
 $router->get('/trackEdit/(:num)', 'AdminController::trackEdit');
 $router->post('/trackSubmitEdit/(:num)', 'AdminController::trackSubmitEdit');
+
+// New routes for updating status and viewing orders
+$router->get('/updateStatus/(:num)', 'AdminController::updateStatus');
+$router->post('/updateStatus', 'AdminController::updateStatus');
 
 // Charts and reports routes
 $router->get('/monthlySales', 'ChartsController::monthlySales');
