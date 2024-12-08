@@ -361,16 +361,25 @@
                     </div>
                 </div>
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <h4 class="mb-0">Payment Method</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="payment" id="COD" checked>
-                            <label class="custom-control-label" for="COD">Cash on Delivery</label>
-                        </div>
-                    </div>
-                </div>
+    <div class="card-header">
+        <h4 class="mb-0">Payment Method</h4>
+    </div>
+    <div class="card-body">
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="payment" id="COD" value="COD" checked>
+            <label class="custom-control-label" for="COD">Cash on Delivery</label>
+        </div>
+        <div class="custom-control custom-radio mt-2">
+            <input type="radio" class="custom-control-input" name="payment" id="Gcash" value="Gcash">
+            <label class="custom-control-label" for="Gcash">Gcash</label>
+        </div>
+        <div class="custom-control custom-radio mt-2">
+            <input type="radio" class="custom-control-input" name="payment" id="PayPal" value="PayPal">
+            <label class="custom-control-label" for="PayPal">PayPal</label>
+        </div>
+    </div>
+</div>
+
                 <button type="submit" class="btn btn-primary btn-block py-3">Place Order</button>
                 </form>
             </div>

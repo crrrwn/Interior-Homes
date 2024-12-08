@@ -54,14 +54,14 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
-
+    
         $userId = $this->session->userdata('user_id');
         $fullname = $this->io->post('fullname');
         $email = $this->io->post('email');
         $number = $this->io->post('number');
         $compAdd = $this->io->post('compAdd');
         $payment = isset($_POST['payment']) ? $this->io->post('payment') : '';
-
+    
         $purchaseData = [
             'user_id' => $userId,
             'fullname' => $fullname,
@@ -70,12 +70,11 @@ class MainController extends Controller
             'payment' => $payment,
             'compAdd' => $compAdd,
         ];
-
+    
         $purchaseId = $this->Shopmodel_model->insertPurchaseData($purchaseData);
-        echo "Purchase ID: $purchaseId";
-
+    
         $data['cart'] = $this->Shopmodel_model->getcart($userId);
-
+    
         if (!empty($data['cart'])) {
             foreach ($data['cart'] as $cartItem) {
                 $itemTotal = $cartItem['prize'] * $cartItem['quantity'];
@@ -91,21 +90,26 @@ class MainController extends Controller
                     'total_price' => $itemTotal,
                 ];
                 $this->db->table('purchase_items')->insert($itemData);
+                $this->Shopmodel_model->updateProductQuantity($cartItem['prod_id'], $cartItem['quantity']);
             }
-
-            $this->Shopmodel_model->updateProductQuantity($purchaseId);
+    
             $this->Shopmodel_model->clearCart($userId);
         }
-
+    
+        // Store purchase ID in session for thank you page
+        $this->session->set_flashdata('purchase_id', $purchaseId);
         redirect('thankyou');
     }
 
     public function thankyou()
     {
-        if (!$this->session->userdata('IsLoggedIn') || $this->session->userdata('role') !== 'user') {
-            redirect('login');
-        }
-        $this->call->view('thankyou');
+
+      if (!$this->session->userdata('IsLoggedIn') || $this->session->userdata('role') !== 'user') {
+        redirect('login');
+    }
+    
+    $data['purchase_id'] = $this->session->flashdata('purchase_id');
+    $this->call->view('thankyou', $data);
     }
 
     public function contact()
@@ -384,6 +388,23 @@ class MainController extends Controller
         $data['products'] = $this->Shopmodel_model->getInfo();
         $this->call->view('admin/dashboard', $data);
     }
+    public function updateQuantity()
+{
+    if (!$this->session->userdata('IsLoggedIn') || $this->session->userdata('role') !== 'user') {
+        redirect('login');
+    }
+
+    $cartId = $this->io->post('cart_id');
+    $quantity = $this->io->post('quantity');
+
+    if ($cartId && $quantity > 0) {
+        $this->db->table('cart')
+                 ->where('id', $cartId)
+                 ->update(['quantity' => $quantity]);
+    }
+
+    redirect('cart');
+}
 }
 ?>
 

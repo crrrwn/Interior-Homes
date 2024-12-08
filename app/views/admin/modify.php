@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php echo include('chop/head.php'); ?>
+<?php echo include('partials/head.php'); ?>
 
 <body>
-  <?php echo include('chop/header.php'); ?>
-  <?php echo include('chop/aside.php'); ?>
+  <?php echo include('partials/header.php'); ?>
+  <?php echo include('partials/aside.php'); ?>
 
   <main id="main" class="main bg-white">
       <div class="pagetitle d-flex justify-content-between align-items-center mb-4">
@@ -227,7 +227,7 @@
       </div>
   </main>
 
-  <?php echo include('chop/script.php'); ?>
+  <?php echo include('partials/script.php'); ?>
   
   <script>
   function editItem(item) {

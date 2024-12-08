@@ -72,7 +72,7 @@ class AdminController extends Controller
         }
         $data['active'] = 'categories';
         $data['cat'] = $this->AdminModel_model->getCat();
-        $this->call->view('admin/chop/categories', $data);
+        $this->call->view('admin/partials/categories', $data);
     }
 
     public function addcat()

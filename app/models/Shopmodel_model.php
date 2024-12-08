@@ -47,23 +47,36 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('cart')->where('user_id', $userId)->delete();
     }
-    public function updateProductQuantity($purchaseId)
-    {
-        // Get the purchase items for the given purchase_id
-        $items = $this->db->table('purchase_items')
-            ->where('purchase_id', $purchaseId)
-            ->get_all();
 
-        foreach ($items as $item) {
-            // Update the product quantity using a raw SQL query
-            $sql = "UPDATE prod SET quantity = quantity - ? WHERE id = ?";
-            $this->db->raw($sql, [$item['quantity'], $item['prod_id']]);
-        }
-    }
+    public function updateCartQuantity($cartId, $quantity)
+{
+    return $this->db->table('cart')
+                    ->where('id', $cartId)
+                    ->update(['quantity' => $quantity]);
+}
+
     public function getorder($userId)
     {
         return $this->db->table('purchase_items')->where('CustomerId', $userId)->get_all();
     }    
+    
+    public function updateProductQuantity($productId, $quantity) {
+        // Get current product quantity
+        $product = $this->db->table('products')
+                           ->where('id', $productId)
+                           ->get();
+        
+        if ($product) {
+            // Calculate new quantity
+            $newQuantity = $product[0]['quantity'] - $quantity;
+            
+            // Update product quantity
+            return $this->db->table('products')
+                           ->where('id', $productId)
+                           ->update(['quantity' => $newQuantity]);
+        }
+        return false;
+    }
 
 }
 ?>

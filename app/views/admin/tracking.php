@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php echo include('chop/head.php'); ?>
+<?php echo include('partials/head.php'); ?>
 
 <body>
-    <?php echo include('chop/header.php'); ?>
-    <?php echo include('chop/aside.php'); ?>
+    <?php echo include('partials/header.php'); ?>
+    <?php echo include('partials/aside.php'); ?>
 
     <main id="main" class="main">
         <div class="pagetitle">
@@ -111,7 +111,7 @@
         </section>
     </main>
 
-    <?php echo include('chop/script.php'); ?>
+    <?php echo include('partials/script.php'); ?>
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {

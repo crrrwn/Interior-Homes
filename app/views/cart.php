@@ -227,28 +227,34 @@
         <h2 class="text-center mb-5">Your Shopping Cart</h2>
         <div class="row">
             <div class="col-lg-8">
-                <?php if (empty($cart)): ?>
+                <?php 
+                // Initialize cartTotal at the start
+                $cartTotal = 0;
+                
+                if (empty($cart)): ?>
                     <div class="alert alert-info" role="alert">
                         Your cart is empty. <a href="/shop" class="alert-link">Continue shopping</a>
                     </div>
                 <?php else: ?>
                     <?php
-                    $cartTotal = 0;
-                    foreach ($cart as $c):
-                        $itemTotal = $c['prize'] * $c['quantity'];
+                    foreach ($cart as $item):
+                        $itemTotal = $item['prize'] * $item['quantity'];
                         $cartTotal += $itemTotal;
                     ?>
                         <div class="cart-item d-flex align-items-center p-3 mb-3">
-                            <img src="<?php echo BASE_URL . 'uploads/' . $c['image']; ?>" alt="<?php echo $c['name']; ?>" class="cart-item-image mr-3">
+                            <img src="<?php echo BASE_URL . 'uploads/' . $item['image']; ?>" alt="<?php echo $item['name']; ?>" class="cart-item-image mr-3">
                             <div class="flex-grow-1">
-                                <h5 class="mb-1"><?php echo $c['name']; ?></h5>
-                                <p class="mb-0">Price: ₱<?php echo number_format($c['prize'], 2); ?></p>
+                                <h5 class="mb-1"><?php echo $item['name']; ?></h5>
+                                <p class="mb-0">Price: ₱<?php echo number_format($item['prize'], 2); ?></p>
                                 <div class="d-flex align-items-center mt-2">
-                                    <input type="number" class="form-control quantity-input mr-2" value="<?php echo $c['quantity']; ?>" min="1">
-                                    <p class="mb-0">Total: ₱<?php echo number_format($itemTotal, 2); ?></p>
+                                    <form action="<?php echo site_url('main/updateQuantity'); ?>" method="post" class="d-flex align-items-center">
+                                        <input type="hidden" name="cart_id" value="<?php echo $item['id']; ?>">
+                                        <input type="number" name="quantity" class="form-control quantity-input mr-2" value="<?php echo $item['quantity']; ?>" min="1">
+                                    </form>
+                                    <p class="mb-0 ml-3">Total: ₱<?php echo number_format($itemTotal, 2); ?></p>
                                 </div>
                             </div>
-                            <a href="/cartdel/<?php echo $c['id']; ?>" class="btn btn-remove">
+                            <a href="/cartdel/<?php echo $item['id']; ?>" class="btn btn-remove">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </div>
@@ -341,9 +347,7 @@
 
             // Quantity input functionality
             $('.quantity-input').change(function() {
-                // Here you would typically update the cart via AJAX
-                // For now, we'll just reload the page
-                location.reload();
+                $(this).closest('form').submit();
             });
         });
     </script>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php echo include('chop/head.php'); ?>
+<?php echo include('partials/head.php'); ?>
 
 <body>
 
-<?php echo include('chop/header.php'); ?>
+<?php echo include('partials/header.php'); ?>
 
     <!-- ======= Sidebar ======= -->
-    <?php echo include('chop/aside.php'); ?>
+    <?php echo include('partials/aside.php'); ?>
 
   <main id="main" class="main text-white"> <!-- Dark background for main content -->
 
@@ -80,7 +80,7 @@
 
 </main>
 
-  <?php echo include('chop/script.php'); ?>
+  <?php echo include('partials/script.php'); ?>
 
 </body>
 

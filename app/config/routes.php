@@ -55,9 +55,11 @@ $router->get('/search', 'MainController::search');
 
 // Cart and checkout routes
 $router->get('/cart', 'MainController::cart');
+$router->post('/updatequantity', 'MainController::updatequantity'); // New route for updating cart quantity
 $router->get('/detail', 'MainController::detail');
 $router->get('/checkout', 'MainController::checkout');
 $router->get('/contact', 'MainController::contact');
+$router->post('/main/updateQuantity', 'MainController::updateQuantity');
 
 // Product interaction routes
 $router->post('/Ac/(:num)', 'MainController::Ac');

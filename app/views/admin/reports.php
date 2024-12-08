@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('chop/head.php'); ?>
+<?php include('partials/head.php'); ?>
 
 <body>
-    <?php include('chop/header.php'); ?>
-    <?php include('chop/aside.php'); ?>
+    <?php include('partials/header.php'); ?>
+    <?php include('partials/aside.php'); ?>
 
     <main id="main" class="main">
         <div class="pagetitle d-flex justify-content-between align-items-center mb-3">
@@ -140,7 +140,7 @@
         </section>
     </main>
 
-    <?php include('chop/script.php'); ?>
+    <?php include('partials/script.php'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
