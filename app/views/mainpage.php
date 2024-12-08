@@ -212,7 +212,7 @@
                     <a href="/shop" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
-            <div class="carousel-item" style="background-image: url('https://i.pinimg.com/originals/8c/93/4b/8c934b0a8f07aaef1e0a6239a9ef4c3b.jpg');">
+            <div class="carousel-item" style="background-image: url('https://i.pinimg.com/736x/72/94/60/7294601d084f78bbefb0e4f17545e5e4.jpg');">
                 <div class="carousel-caption">
                     <h4>Elevate Your Living Space</h4>
                     <h3>Discover Timeless Elegance for Your Home</h3>

@@ -332,7 +332,6 @@
                 Hello <span id="customerName">Valued Customer</span>, we're thrilled to have you as a customer and appreciate your support. Your order is being processed, and we'll notify you once it's on its way.
             </p>
             <div class="order-details">
-                <p><strong>Order Number:</strong> <span id="orderNumber">N/A</span></p>
                 <p><strong>Order Date:</strong> <span id="orderDate"></span></p>
             </div>
             <p class="message">
