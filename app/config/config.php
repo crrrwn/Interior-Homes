@@ -130,7 +130,7 @@ $config['log_dir']                  = 'runtime/logs/';
 | Note: This will NOT disable or override the LavaLust-specific
 |	autoloading (app/config/autoload.php)
 */
-$config['composer_autoload']        = FALSE;
+$config['composer_autoload']        = ROOT_DIR . 'vendor\tecnickcom\tcpdf\tcpdf.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -172,6 +172,7 @@ $config['charset']					= 'UTF-8';
 | app/views/errors/ directory.  Use a full server path with trailing slash.
 |
 */
+
 $config['error_view_path']         	= APP_DIR . 'views' . DIRECTORY_SEPARATOR . 'errors' . DIRECTORY_SEPARATOR;
 
 /*
