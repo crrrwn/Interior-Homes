@@ -10,10 +10,18 @@
     <main id="main" class="main">
         <div class="pagetitle d-flex justify-content-between align-items-center mb-3">
             <h1 class="text-primary">Financial Reports</h1>
+            <form action="/downloadReportsPdf" method="post">
+                <input type="hidden" name="today" value="<?= $today ?>">
+                <input type="hidden" name="weekly" value="<?= $weekly ?>">
+                <input type="hidden" name="monthly" value="<?= $monthly ?>">
+                <input type="hidden" name="overall_sales" value="<?= $overall_sales ?>">
+                <button type="submit" class="btn btn-danger">Download PDF Report</button>
+            </form>
         </div>
 
         <section class="section dashboard">
             <div class="row g-3">
+                <!-- Revenue Cards -->
                 <div class="col-md-3">
                     <div class="card bg-primary text-white h-100">
                         <div class="card-body">
@@ -202,4 +210,3 @@
     </style>
 </body>
 </html>
-
