@@ -65,7 +65,7 @@ $database['main'] = array(
     'username'	=> 'root',
     'password'	=> '',
     'database'	=> 'interior_home',
-    'charset'	=> 'utf8mb4',
+    'charset'	=> 'utf8',
     'dbprefix'	=> '',
 );
 

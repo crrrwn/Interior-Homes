@@ -12,7 +12,7 @@ class ChartsController extends Controller
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "lashopee";
+    $database = "interior_home";
 
     // Create connection
     $conn = new \mysqli($servername, $username, $password, $database);
@@ -70,7 +70,7 @@ class ChartsController extends Controller
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "lashopee";
+    $database = "interior_home";
 
     // Create connection
     $conn = new \mysqli($servername, $username, $password, $database);
@@ -120,7 +120,7 @@ class ChartsController extends Controller
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "lashopee";
+    $database = "interior_home";
 
     // Create connection
     $conn = new \mysqli($servername, $username, $password, $database);
@@ -172,7 +172,7 @@ class ChartsController extends Controller
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "lashopee";
+    $database = "interior_home";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
