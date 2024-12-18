@@ -1,7 +1,7 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
-class Admincontroller extends Controller
+class AdminController extends Controller
 {
     public function __construct()
     {

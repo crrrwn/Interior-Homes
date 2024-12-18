@@ -1,7 +1,7 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
-class Usercontroller extends Controller
+class UserController extends Controller
 {
     public function create()
 {

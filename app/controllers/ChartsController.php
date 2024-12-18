@@ -1,7 +1,7 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
-class Chartscontroller extends Controller
+class ChartsController extends Controller
 {
   public function monthlySales()
   {

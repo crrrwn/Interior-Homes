@@ -1,7 +1,7 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
-class Reportscontroller extends Controller
+class ReportsController extends Controller
 {
     public function reports()
     {
