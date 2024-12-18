@@ -185,7 +185,7 @@ class Maincontroller extends Controller
         $data['prod'] = $this->Shop_model->searchInfo($searchTerm);
 
         $userId = $this->session->userdata('user_id');
-        $data['cart'] = $this->SShop_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
 
         $this->call->view('shop', $data);
