@@ -1,7 +1,7 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
-class AdminModel_model extends Model
+class Admin_model extends Model
 {
     public function getInfo()
     {

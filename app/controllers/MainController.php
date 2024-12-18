@@ -1,12 +1,12 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
-class MainController extends Controller
+class Maincontroller extends Controller
 {
     public function __construct() {
         parent::__construct();
         $this->call->model('User_model');
-        $this->call->model('Shopmodel_model');
+        $this->call->model('Shop_model');
     }
 
     public function index()
@@ -17,7 +17,7 @@ class MainController extends Controller
 
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('homepage', $data);
     }
@@ -30,7 +30,7 @@ class MainController extends Controller
 
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('mainpage', $data);
     }
@@ -42,7 +42,7 @@ class MainController extends Controller
         }
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $data['users'] = $this->User_model->getUserById($userId);
 
@@ -71,9 +71,9 @@ class MainController extends Controller
             'compAdd' => $compAdd,
         ];
     
-        $purchaseId = $this->Shopmodel_model->insertPurchaseData($purchaseData);
+        $purchaseId = $this->Shop_model->insertPurchaseData($purchaseData);
     
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
     
         if (!empty($data['cart'])) {
             foreach ($data['cart'] as $cartItem) {
@@ -90,10 +90,10 @@ class MainController extends Controller
                     'total_price' => $itemTotal,
                 ];
                 $this->db->table('purchase_items')->insert($itemData);
-                $this->Shopmodel_model->updateProductQuantity($cartItem['prod_id'], $cartItem['quantity']);
+                $this->Shop_model->updateProductQuantity($cartItem['prod_id'], $cartItem['quantity']);
             }
     
-            $this->Shopmodel_model->clearCart($userId);
+            $this->Shop_model->clearCart($userId);
         }
     
         // Store purchase ID in session for thank you page
@@ -119,7 +119,7 @@ class MainController extends Controller
         }
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('contact', $data);
     }
@@ -131,7 +131,7 @@ class MainController extends Controller
         }
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('detail', $data);
     }
@@ -141,10 +141,10 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
-        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        $data['prod'] = $this->Shop_model->getInfoById($id);
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('viewdetails', $data);
     }
@@ -154,10 +154,10 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
-        $data['prod'] = $this->Shopmodel_model->getInfo();
+        $data['prod'] = $this->Shop_model->getInfo();
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('shop', $data);
     }
@@ -167,10 +167,10 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
-        $data['prod'] = $this->Shopmodel_model->getInfo();
+        $data['prod'] = $this->Shop_model->getInfo();
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('menu', $data);
     }
@@ -182,10 +182,10 @@ class MainController extends Controller
         }
 
         $searchTerm = $this->io->get('search');
-        $data['prod'] = $this->Shopmodel_model->searchInfo($searchTerm);
+        $data['prod'] = $this->Shop_model->searchInfo($searchTerm);
 
         $userId = $this->session->userdata('user_id');
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->SShop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
 
         $this->call->view('shop', $data);
@@ -199,7 +199,7 @@ class MainController extends Controller
 
         $userId = $this->session->userdata('user_id');
 
-        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cart'] = $this->Shop_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('cart', $data);
     }
@@ -212,7 +212,7 @@ class MainController extends Controller
 
         $userId = $this->session->userdata('user_id');
 
-        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        $data['prod'] = $this->Shop_model->getInfoById($id);
         $quantity = $this->io->post('quantity');
 
         $bind = [
@@ -236,7 +236,7 @@ class MainController extends Controller
 
         $userId = $this->session->userdata('user_id');
 
-        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        $data['prod'] = $this->Shop_model->getInfoById($id);
         $bind = [
             'user_id' => $userId,
             'prod_id' => $id,
@@ -275,7 +275,7 @@ class MainController extends Controller
         $data['cart'] = $this->User_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
         
-        $data['purchase_items'] = $this->Shopmodel_model->getorder($userId);
+        $data['purchase_items'] = $this->Shop_model->getorder($userId);
         $data['users'] = $this->User_model->getUserById($userId);
         $this->call->view('profile',$data);
     }
@@ -385,7 +385,7 @@ class MainController extends Controller
         }
         
         $data['users'] = $this->User_model->getusers();
-        $data['products'] = $this->Shopmodel_model->getInfo();
+        $data['products'] = $this->Shop_model->getInfo();
         $this->call->view('admin/dashboard', $data);
     }
     public function updateQuantity()

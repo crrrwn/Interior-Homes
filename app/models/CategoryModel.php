@@ -1,7 +1,7 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-class CategoryModel extends Model {
+class Categorymodel extends Model {
     
     public function getAllCategories() {
         return $this->db->table('cat')->get_all();

@@ -45,75 +45,75 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 */
 
 // Main routes
-$router->get('/', 'MainController::index');
-$router->get('/main', 'MainController::main');
+$router->get('/', 'Maincontroller::index');
+$router->get('/main', 'Maincontroller::main');
 
 // Shop and menu routes
-$router->get('/shop', 'MainController::shop');
-$router->get('/menu', 'MainController::menu');
-$router->get('/search', 'MainController::search');
+$router->get('/shop', 'Maincontroller::shop');
+$router->get('/menu', 'Maincontroller::menu');
+$router->get('/search', 'Maincontroller::search');
 
 // Cart and checkout routes
-$router->get('/cart', 'MainController::cart');
-$router->post('/updatequantity', 'MainController::updatequantity'); // New route for updating cart quantity
-$router->get('/detail', 'MainController::detail');
-$router->get('/checkout', 'MainController::checkout');
-$router->get('/contact', 'MainController::contact');
-$router->post('/main/updateQuantity', 'MainController::updateQuantity');
+$router->get('/cart', 'Maincontroller::cart');
+$router->post('/updatequantity', 'Maincontroller::updatequantity'); // New route for updating cart quantity
+$router->get('/detail', 'Maincontroller::detail');
+$router->get('/checkout', 'Maincontroller::checkout');
+$router->get('/contact', 'Maincontroller::contact');
+$router->post('/main/updateQuantity', 'Maincontroller::updateQuantity');
 
 // Product interaction routes
-$router->post('/Ac/(:num)', 'MainController::Ac');
-$router->get('/Acc/(:num)', 'MainController::Acc');
-$router->get('/view/(:num)', 'MainController::view');
-$router->get('/cartdel/(:num)', 'MainController::cartdel');
-$router->post('/purchase', 'MainController::purchase');
-$router->get('/thankyou', 'MainController::thankyou');
+$router->post('/Ac/(:num)', 'Maincontroller::Ac');
+$router->get('/Acc/(:num)', 'Maincontroller::Acc');
+$router->get('/view/(:num)', 'Maincontroller::view');
+$router->get('/cartdel/(:num)', 'Maincontroller::cartdel');
+$router->post('/purchase', 'Maincontroller::purchase');
+$router->get('/thankyou', 'Maincontroller::thankyou');
 
 // User profile routes
-$router->get('/profile', 'MainController::profile');
-$router->post('/profUp', 'MainController::profUp');
+$router->get('/profile', 'Maincontroller::profile');
+$router->post('/profUp', 'Maincontroller::profUp');
 
 // Authentication routes
-$router->get('/login', 'MainController::login');
-$router->post('/login/process', 'MainController::process_login');
-$router->get('/logout', 'MainController::logout');
-$router->get('/register', 'MainController::register');
-$router->post('/register/process', 'MainController::process_register');
+$router->get('/login', 'Maincontroller::login');
+$router->post('/login/process', 'Maincontroller::process_login');
+$router->get('/logout', 'Maincontroller::logout');
+$router->get('/register', 'Maincontroller::register');
+$router->post('/register/process', 'Maincontroller::process_register');
 
 // Legacy authentication routes (might still be needed)
-$router->post('/create', 'UserController::create');
-$router->post('/auth', 'UserController::auth');
-$router->post('/changePass', 'UserController::changePass');
+$router->post('/create', 'Usercontroller::create');
+$router->post('/auth', 'Usercontroller::auth');
+$router->post('/changePass', 'Usercontroller::changePass');
 
 // Admin routes
-$router->get('/admin/dashboard', 'MainController::admin_dashboard'); // New admin dashboard route
-$router->get('/dashboard', 'AdminController::dashboard');
-$router->get('/products', 'AdminController::products');
-$router->get('/items', 'AdminController::items');
-$router->get('/modify', 'AdminController::modify');
-$router->post('/save', 'AdminController::add');
-$router->post('/addcat', 'AdminController::addcat');
-$router->get('/delcat/(:num)', 'AdminController::delcat');
-$router->get('/delete/(:num)', 'AdminController::delete'); // Delete product route
+$router->get('/admin/dashboard', 'Maincontroller::admin_dashboard'); // New admin dashboard route
+$router->get('/dashboard', 'Admincontroller::dashboard');
+$router->get('/products', 'Admincontroller::products');
+$router->get('/items', 'Admincontroller::items');
+$router->get('/modify', 'Admincontroller::modify');
+$router->post('/save', 'Admincontroller::add');
+$router->post('/addcat', 'Admincontroller::addcat');
+$router->get('/delcat/(:num)', 'Admincontroller::delcat');
+$router->get('/delete/(:num)', 'Admincontroller::delete'); // Delete product route
 
 // Category management route
-$router->get('/categories', 'AdminController::categories');
+$router->get('/categories', 'Admincontroller::categories');
 
 // Tracking routes
-$router->get('/tracking', 'AdminController::trackModify');
-$router->get('/edit/(:num)', 'AdminController::edit');
-$router->post('/submitedit/(:num)', 'AdminController::submitedit');
-$router->get('/trackEdit/(:num)', 'AdminController::trackEdit');
-$router->post('/trackSubmitEdit/(:num)', 'AdminController::trackSubmitEdit');
+$router->get('/tracking', 'Admincontroller::trackModify');
+$router->get('/edit/(:num)', 'Admincontroller::edit');
+$router->post('/submitedit/(:num)', 'Admincontroller::submitedit');
+$router->get('/trackEdit/(:num)', 'Admincontroller::trackEdit');
+$router->post('/trackSubmitEdit/(:num)', 'Admincontroller::trackSubmitEdit');
 
 // New routes for updating status and viewing orders
-$router->get('/updateStatus/(:num)', 'AdminController::updateStatus');
-$router->post('/updateStatus', 'AdminController::updateStatus');
+$router->get('/updateStatus/(:num)', 'Admincontroller::updateStatus');
+$router->post('/updateStatus', 'Admincontroller::updateStatus');
 
 // Charts and reports routes
-$router->get('/monthlySales', 'ChartsController::monthlySales');
-$router->get('/dailySales', 'ChartsController::dailySales');
-$router->get('/yearlySales', 'ChartsController::yearlySales');
-$router->get('/buwan', 'ChartsController::buwan');
-$router->get('/reports', 'ReportsController::reports');
-$router->post('/downloadReportsPdf', 'ReportsController::downloadReportsPdf');
+$router->get('/monthlySales', 'Chartscontroller::monthlySales');
+$router->get('/dailySales', 'Chartscontroller::dailySales');
+$router->get('/yearlySales', 'Chartscontroller::yearlySales');
+$router->get('/buwan', 'Chartscontroller::buwan');
+$router->get('/reports', 'Reportscontroller::reports');
+$router->post('/downloadReportsPdf', 'Reportscontroller::downloadReportsPdf');
