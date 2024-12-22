@@ -3,13 +3,19 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
 class ReportsController extends Controller
 {
+
+    public function __construct() {
+        parent::__construct();
+        $this->call->model('Users_model');
+    }
+    
     public function reports()
     {
-        $data['today'] = $this->Reports_model->getTodaySales();
-        $data['monthly'] = $this->Reports_model->getMonthlySales();
-        $data['yearly'] = $this->Reports_model->getYearlySales();
-        $data['weekly'] = $this->Reports_model->getWeeklySales();
-        $data['overall_sales'] = $this->Reports_model->getOverallSales();
+        $data['today'] = $this->Users_model->getTodaySales();
+        $data['monthly'] = $this->Users_model->getMonthlySales();
+        $data['yearly'] = $this->Users_model->getYearlySales();
+        $data['weekly'] = $this->Users_model->getWeeklySales();
+        $data['overall_sales'] = $this->Users_model->getOverallSales();
         
         $this->call->view('admin/reports', $data);
     }

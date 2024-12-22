@@ -5,19 +5,19 @@ class CategoriesController extends Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->call->model('Categorymodel');
+        $this->call->model('Users_model');
     }
     
     public function index() {
         $data['active'] = 'categories';
-        $data['cat'] = $this->Categorymodel->getAllCategories();
+        $data['cat'] = $this->Users_model->getAllCategories();
         $this->call->view('admin/chop/categories', $data);
     }
     
     public function add() {
         $category_name = $this->io->post('newcat');
         
-        if($this->Categorymodel->addCategory($category_name)) {
+        if($this->Users_model->addCategory($category_name)) {
             $this->session->set_flashdata('success', 'Category added successfully');
         } else {
             $this->session->set_flashdata('error', 'Failed to add category');
@@ -27,7 +27,7 @@ class CategoriesController extends Controller {
     }
     
     public function delete($id) {
-        if($this->Categorymodel->deleteCategory($id)) {
+        if($this->Users_model->deleteCategory($id)) {
             $this->session->set_flashdata('success', 'Category deleted successfully');
         } else {
             $this->session->set_flashdata('error', 'Failed to delete category');

@@ -6,9 +6,7 @@ class AdminController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->call->model('Admin_model');
-        //$this->call->model('Reports_model');
-        //$this->call->model('CategoryModel');
+        $this->call->model('Users_model');
     }
 
     public function dashboard()
@@ -16,11 +14,11 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['today'] = $this->Reports_model->getTodaySales();
-        $data['monthly'] = $this->Reports_model->getMonthlySales();
-        $data['purchase_items'] = $this->Admin_model->getSales();
-        $data['Topitems'] = $this->Admin_model->topProduct();
-        $data['overall_sales'] = $this->Reports_model->getOverallSales();
+        $data['today'] = $this->Users_model->getTodaySales();
+        $data['monthly'] = $this->Users_model->getMonthlySales();
+        $data['purchase_items'] = $this->Users_model->getSales();
+        $data['Topitems'] = $this->Users_model->topProduct();
+        $data['overall_sales'] = $this->Users_model->getOverallSales();
         $this->call->view('admin/dashboard', $data);
     }
 
@@ -29,7 +27,7 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['prod'] = $this->Admin_model->getInfo();
+        $data['prod'] = $this->Users_model->getInfo();
         $this->call->view('admin/products', $data);
     }
 
@@ -71,7 +69,7 @@ class AdminController extends Controller
             redirect('login');
         }
         $data['active'] = 'categories';
-        $data['cat'] = $this->Admin_model->getCat();
+        $data['cat'] = $this->Users_model->getCat();
         $this->call->view('admin/partials/categories', $data);
     }
 
@@ -114,7 +112,7 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['cat'] = $this->Admin_model->getCat();
+        $data['cat'] = $this->Users_model->getCat();
         $this->call->view('admin/items', $data);
     }
 
@@ -123,8 +121,8 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['prod'] = $this->Admin_model->getInfo();
-        $data['cat'] = $this->Admin_model->getCat();
+        $data['prod'] = $this->Users_model->getInfo();
+        $data['cat'] = $this->Users_model->getCat();
         $this->call->view('admin/modify', $data);
     }
     
@@ -133,9 +131,9 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['prod'] = $this->Admin_model->getInfo();
-        $data['cat'] = $this->Admin_model->getCat();
-        $data['edit'] = $this->Admin_model->searchInfo($id);
+        $data['prod'] = $this->Users_model->getInfo();
+        $data['cat'] = $this->Users_model->getCat();
+        $data['edit'] = $this->Users_model->searchInfo($id);
         $this->call->view('admin/modify', $data);
     }
 
@@ -184,8 +182,8 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['purchase_items'] = $this->Admin_model->getSales();
-        $data['categories'] = $this->Admin_model->getCategories();
+        $data['purchase_items'] = $this->Users_model->getSales();
+        $data['categories'] = $this->Users_model->getCategories();
         $this->call->view('admin/tracking', $data);
     }
     
@@ -194,9 +192,9 @@ class AdminController extends Controller
         if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $data['purchase_items'] = $this->Admin_model->getSales();
-        $data['categories'] = $this->Admin_model->getCategories();
-        $data['trackEdit'] = $this->Admin_model->getPurchaseItemById($id);
+        $data['purchase_items'] = $this->Users_model->getSales();
+        $data['categories'] = $this->Users_model->getCategories();
+        $data['trackEdit'] = $this->Users_model->getPurchaseItemById($id);
         $this->call->view('admin/tracking', $data);
     }
     
@@ -237,7 +235,7 @@ class AdminController extends Controller
         }
 
         if (isset($id)) {
-            $product = $this->Admin_model->searchInfo($id);
+            $product = $this->Users_model->searchInfo($id);
 
             if ($product) {
                 $deleted = $this->db->table('prod')->where("id", $id)->delete();
@@ -306,7 +304,7 @@ class AdminController extends Controller
             redirect('login');
         }
 
-        $data['order'] = $this->Admin_model->getPurchaseItemById($id);
+        $data['order'] = $this->Users_model->getPurchaseItemById($id);
         $this->call->view('admin/view-order', $data);
     }
 }

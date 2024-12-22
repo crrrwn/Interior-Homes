@@ -3,6 +3,11 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
 class ChartsController extends Controller
 {
+
+  public function __construct() {
+    parent::__construct();
+    $this->call->model('Users_model');
+}
   public function monthlySales()
   {
     // Setting header to json

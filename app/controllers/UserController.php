@@ -3,6 +3,11 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
 class UserController extends Controller
 {
+    public function __construct() {
+        parent::__construct();
+        $this->call->model('Users_model');
+    }
+
     public function create()
 {
     // Retrieve input data from POST
@@ -22,7 +27,7 @@ class UserController extends Controller
     );
 
     // Insert the user data into the database
-    $this->User_model->addUser($data);
+    $this->Users_model->addUser($data);
 
     // Redirect to the login page
     redirect('/login');
@@ -33,7 +38,7 @@ class UserController extends Controller
     {
         $userId = $this->session->userdata('user_id');
         // Fetch user information from the model
-        $data['user'] = $this->User_model->getUserById($userId);
+        $data['user'] = $this->Users_model->getUserById($userId);
     
         // Get form data
         $currentPassword = $this->io->post('password');
@@ -49,7 +54,7 @@ class UserController extends Controller
         }
     
         // Check if the current password matches the one in the database
-        $user = $this->User_model->getUserById($userId);
+        $user = $this->Users_model->getUserById($userId);
     
         if ($user && password_verify($currentPassword, $user['password'])) {
             // Update the user's password
@@ -70,7 +75,7 @@ class UserController extends Controller
     {
         $email = $this->io->post('email');
         $password = $this->io->post('password');
-        $user = $this->User_model->getEmail($email);
+        $user = $this->Users_model->getEmail($email);
 
         if ($user && password_verify($password, $user['password'])) {
             $sesData = [

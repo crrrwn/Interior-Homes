@@ -259,16 +259,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/main" class="nav-link active">Home</a>
+                        <a href="/" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/shop" class="nav-link">Shop</a>
+                        <a href="/login" class="nav-link">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/profile" class="nav-link">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/logout" class="nav-link">Logout</a>
+                        <a href="/register" class="nav-link">Register</a>
                     </li>
                 </ul>
             </div>
@@ -327,7 +324,7 @@
     <!-- Footer Start -->
     <footer class="footer">
         <div class="container">
-            <p>© <?php echo date('Y'); ?> Interior Homes Decor. All Rights Reserved. Designed with <i class="fas fa-heart"></i> by <a href="#">YourName</a></p>
+            <p>© <?php echo date('Y'); ?> Interior Homes Decor. All Rights Reserved. Designed with <i class="fas fa-heart"></i> by <a href="#">INTERIOR HOMES</a></p>
             <div class="social-icons">
                 <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>

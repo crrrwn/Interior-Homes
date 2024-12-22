@@ -253,7 +253,7 @@
     <!-- Footer Start -->
     <div class="footer">
         <div class="container">
-            <p>© 2024 Interior Homes Decor. All Rights Reserved. Designed with <i class="fas fa-heart"></i> by <a href="#">YourName</a></p>
+            <p>© 2024 Interior Homes Decor. All Rights Reserved. Designed with <i class="fas fa-heart"></i> by <a href="#">INTERIOR HOMES</a></p>
         </div>
     </div>
     <!-- Footer End -->

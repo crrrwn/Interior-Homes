@@ -44,6 +44,7 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 |
 */
 
+// $router->get('/', 'Welcome::index');
 $router->get('/', 'MainController::index');
 $router->get('/main', 'MainController::main');
 
